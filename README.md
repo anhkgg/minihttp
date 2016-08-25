@@ -1,10 +1,12 @@
 # Description
 
-minihttp v1 by liburl.
+minihttp v1 by libcurl.
 
 support:
 1. GET
+
 2. POST
+
 3. ajax
 
 # Usage
