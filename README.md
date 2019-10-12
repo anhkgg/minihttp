@@ -45,7 +45,7 @@ int main()
 	cout << res_ << endl;
 
 	//size = http.get("http://so.xiaoshuo520.com/kw/%E6%B1%9F%E5%B1%B1", res_);
-	size = http.get("http://so.xiaoshuo520.com/", 80, "kw/江山", res_);
+	size = http.get("http://so.xiaoshuo520.com/", 80, "kw/姹熷北", res_);
 
 	return 0;
 }
@@ -55,6 +55,6 @@ You can see more informaiton [here](http://anhkgg.github.io/liburl-use-minihttp/
 
 Contact me if there are some bugs in `minihttp`.
 
-- 公众号：[汉客儿](https://mp.weixin.qq.com/s/-h4A6MXOdPLBEIzFXY-SiA)
+- 鍏紬鍙凤細[姹夊鍎縘(https://mp.weixin.qq.com/s/-h4A6MXOdPLBEIzFXY-SiA)
 - homepage:  [anhkgg.com](anhkgg.com)
 - weibo: [weibo.com/anhkgg](weibo.com/anhkgg)
