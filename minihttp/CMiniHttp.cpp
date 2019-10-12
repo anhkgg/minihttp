@@ -69,7 +69,7 @@ size_t CMiniHttp::write_callback(char *ptr, size_t size, size_t nmemb, void *use
 	size_t all_size = size*nmemb;
 	PWRITE_CALLBACK_DATA data = (PWRITE_CALLBACK_DATA)userdata;
 
-	data->data.append(ptr);
+	data->data.append(ptr, all_size);
 	data->size += all_size;
 
 	return all_size;
@@ -139,7 +139,8 @@ size_t CMiniHttp::get(string url, string& res)
 		ret_size = 0;
 	}
 	else {
-		res = data.data;
+		// res = data.data;
+        res.assign(data.data.c_str(), data.size);
 		ret_size = data.size;
 	}
 
@@ -186,7 +187,7 @@ size_t CMiniHttp::post(string url, string data, string& res, bool ajax )
 	}
 	else {
 
-		res = rdata.data;
+        res.assign(rdata.data.c_str(), rdata.size);
 
 		ret_size = rdata.size;
 	}

@@ -9,6 +9,7 @@ support:
 3. [x] POST
 4. [x] Ajax
 5. [x] Cookies
+6. [x] Save raw data
 
 # Usage
 
