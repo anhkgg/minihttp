@@ -6,8 +6,10 @@
 // github:		https://github.com/anhkgg
 // ---------------------------------------------
 
-#include "stdafx.h"
 #include "CMiniHttp.h"
+
+#pragma comment(lib, "legacy_stdio_definitions.lib")
+extern "C" { FILE __iob_func[3] = { *stdin,*stdout,*stderr }; }
 
 CMiniHttp::CMiniHttp()
 {
@@ -34,6 +36,19 @@ void CMiniHttp::curl_init(CURL **curl, PWRITE_CALLBACK_DATA data)
 
 	data->data = "";
 	data->size = 0;
+
+    // https://blog.csdn.net/ypbsyy/article/details/83784670
+    curl_easy_setopt(*curl, CURLOPT_SSL_VERIFYPEER, false);//这个是重点。
+
+    // https请求 不验证证书和hosts
+    // 不能设置这个，否则连接失败
+    //curl_easy_setopt(*curl, CURLOPT_SSL_VERIFYHOST, false);//
+
+    /*
+    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, true);
+    curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, true);
+    curl_setopt($curl,CURLOPT_CAINFO,dirname(__FILE__).'/cacert.pem');//这是根据http://curl.haxx.se/ca/cacert.pem 下载的证书，添加这句话之后就运行正常了
+    */
 
 	curl_easy_setopt(*curl, CURLOPT_WRITEDATA, data);
 	curl_easy_setopt(*curl, CURLOPT_WRITEFUNCTION, write_callback);

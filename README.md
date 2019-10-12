@@ -1,28 +1,30 @@
-# Description
+# minihttp
 
-minihttp v1 by libcurl.
+`minihttp` is a simple https/http request library based on libcurl and openssl.
 
 support:
 
-1. GET
-
-2. POST
-
-3. ajax
+1. [x] https / http
+2. [x] GET
+3. [x] POST
+4. [x] Ajax
+5. [x] Cookies
 
 # Usage
 
-```
-#include "stdafx.h"
-#include "CMiniHttp.h"
+build by vs2017.
 
+```
 int main()
 {
 	CMiniHttp http;
 
 	string res_;
 
-	//size_t size = http.get("http://www.baidu.com", res_);
+	size_t size = http.get("https://www.baidu.com", res_);
+    cout << "size = " << size << endl;
+    cout << res_ << endl;
+
 	//size_t size = http.get("http://www.baidu.com/", 80, "/index.html", res_);
 
 	/*
@@ -30,14 +32,14 @@ int main()
 	userpass:11
 	saveLogin:0
 	*/
-	//size_t size = http.post("http://www.xiaoshuo520.com/services/Member/chkLogin/?jsoncallback=jQuery17206062402683310211_1470489169755&0.05604361440055072", "username=111&userpass=11&saveLogin=0", res_);
-	size_t size = http.post("http://www.xiaoshuo520.com/", 80, "services/Member/chkLogin/?jsoncallback=jQuery17206062402683310211_1470489169755&0.05604361440055072", "username=111&userpass=11&saveLogin=0", res_);
+	//size_t size = http.post("http://www.xiaoshuo520.com/services/Member/chkLogin/?", "username=111&userpass=11&saveLogin=0", res_);
+	size = http.post("http://www.xiaoshuo520.com/", 80, "services/Member/chkLogin/?", "username=111&userpass=11&saveLogin=0", res_);
 
 	cout << "size = " << size << endl;
 	cout << res_ << endl;
 
 	//size = http.get("http://www.baidu.com/", 80, "/index.html", res_);
-	size = http.ajax("http://www.xiaoshuo520.com/", 80, "services/Member/chkLogin/?jsoncallback=jQuery17206062402683310211_1470489169755&0.05604361440055072", "username=admin11&userpass=admin11&saveLogin=0", res_);
+	size = http.ajax("http://www.xiaoshuo520.com/", 80, "services/Member/chkLogin/?", "username=admin11&userpass=admin11&saveLogin=0", res_);
 
 	cout << "size = " << size << endl;
 	cout << res_ << endl;
@@ -49,11 +51,10 @@ int main()
 }
 ```
 
-# Information
+You can see more informaiton [here](http://anhkgg.github.io/liburl-use-minihttp/).
 
-site：	http://anhkgg.github.io
+Contact me if there are some bugs in `minihttp`.
 
-github:	https://github.com/anhkgg
-
-详细的还可以看看：
-http://anhkgg.github.io/liburl-use-minihttp/
+- 公众号：[汉客儿](https://mp.weixin.qq.com/s/-h4A6MXOdPLBEIzFXY-SiA)
+- homepage:  [anhkgg.com](anhkgg.com)
+- weibo: [weibo.com/anhkgg](weibo.com/anhkgg)

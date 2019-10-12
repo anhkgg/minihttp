@@ -7,7 +7,26 @@
 // ---------------------------------------------
 
 #pragma once
-#include "stdafx.h"
+
+#include <assert.h>
+
+#include <iostream>
+#include <sstream>
+#include <fstream>
+
+using namespace std;
+
+#pragma comment(lib, "ws2_32.lib")
+#pragma comment(lib, "Wldap32.lib")
+#define CURL_STATICLIB
+
+#include "../liburl/include/curl/curl.h"
+
+#ifndef _DEBUG
+#pragma comment(lib, "../liburl/Win32/vs2017/libcurls.lib")
+#else
+#pragma comment(lib, "../liburl/Win32/vs2017/libcurlds.lib")
+#endif
 
 /*
 1. 基本http访问功能，支持get，post，ajax
